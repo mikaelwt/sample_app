@@ -1,59 +1,43 @@
-	require 'spec_helper'
+require 'spec_helper'
 	
 describe "Static pages" do
 
 let (:title_text ) {"Ruby on Rails Tutorial Sample App"}
 
+  subject { page }
+
   describe "Home page" do
 
-    it "should have the content 'Sample App'" do
-      visit '/static_pages/home'
-      expect(page).to have_content('Sample App')
-    end
+  	before { visit root_path }
 
-    it "should have the title 'Home'" do
-      visit '/static_pages/home'
-      expect(page).to have_title("#{title_text} | Home")
-    end
+    it { should have_content ('sample app') }
+    it { should have_title ('' ) }
+  	it { should_not have_title('| Home') }
   end
 
   describe "Help page" do
 
-    it "should have the content 'Help'" do
-      visit '/static_pages/help'
-      expect(page).to have_content('Help')
-    end
+  	before { visit help_path }
 
-    it "should have the title 'Help'" do
-      visit '/static_pages/help'
-      expect(page).to have_title("#{title_text} | Help")
-    end
+    it { should have_content ('sample app') }
+    it { should have_title ("#{title_text} | Help" ) }
   end
 
   
   describe "About page" do
 
-    it "should have the content 'About Us'" do
-      visit '/static_pages/about'
-      expect(page).to have_content('About Us')
-    end
+  	before { visit about_path }
 
-    it "should have the title 'About Us'" do
-      visit '/static_pages/about'
-      expect(page).to have_title("#{title_text} | About Us")
-    end
+    it { should have_content ('sample app') }
+    it { should have_title ("#{title_text} | About" ) }
+
   end
 
   describe "Contact page" do
 
-    it "should have the content 'Contact Us'" do
-      visit '/static_pages/contact'
-      expect(page).to have_content('Contact Us')
-    end
+  	before { visit contact_path }
 
-    it "should have the title 'Contact Us'" do
-      visit '/static_pages/contact'
-      expect(page).to have_title("#{title_text} | Contact Us")
-    end
+    it { should have_content ('sample app') }
+    it { should have_title ("#{title_text} | Contact Us" ) }
   end
 end
